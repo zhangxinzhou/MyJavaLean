@@ -1,0 +1,13 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+
+
+mybatis:
+  mapper-locations: classpath*:com/**/*.xml
+  type-handlers-package: com.example.learn02_mybaties_encrypt
