@@ -1,7 +1,6 @@
 package com.example.demo.filter;
 
 import com.example.demo.entity.UserForm;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
