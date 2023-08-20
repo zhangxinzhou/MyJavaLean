@@ -14,26 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class IndexController {
-    @Autowired
-    RedisTemplate redisTemplate;
 
-    @GetMapping("/index")
-    public ModelAndView index(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView();
+    @RequestMapping("/index")
+    @ResponseBody
+    public Object index(HttpServletRequest request) {
         Object userInfo = request.getSession().getAttribute(SSOFilter.USER_INFO);
-
-        UserForm user = (UserForm) userInfo;
-        modelAndView.setViewName("index");
-        modelAndView.addObject("user", user);
-
-        request.getSession().setAttribute("test", "123");
-        return modelAndView;
+        return userInfo;
     }
 
-    @RequestMapping("/test")
+    @RequestMapping("/")
     @ResponseBody
-    public String test(HttpServletRequest request) {
-        UserForm user = (UserForm) request.getSession().getAttribute(SSOFilter.USER_INFO);
-        return "test and user=" + user;
+    public Object welcome(HttpServletRequest request) {
+        Object userInfo = request.getSession().getAttribute(SSOFilter.USER_INFO);
+        return userInfo;
     }
 }
