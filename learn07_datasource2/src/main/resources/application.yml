@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    master:
+      driver-class-name: org.postgresql.Driver
+      username: postgres
+      password: zxz
+      url: jdbc:postgresql://localhost:5432/postgres?serverTimezone=UTC&autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+      type: com.alibaba.druid.pool.DruidDataSource
+    second:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: zxz
+      password: zxz
+      url: jdbc:mysql://localhost:3306/zxz?serverTimezone=UTC&autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+      type: com.alibaba.druid.pool.DruidDataSource
+
+  #mybatis:
+  #config‐location: classpath:mybatis/mybatis‐config.xml  #指定全局配置文件的位置
+  #mapper‐locations: classpath:mapper/*.xml
+
+logging:
+  path: ./data_migration
+  level:
+    root: INFO
+    com.cxqy.data: DEBUG

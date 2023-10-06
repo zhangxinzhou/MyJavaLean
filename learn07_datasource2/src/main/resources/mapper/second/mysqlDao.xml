@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.second.MysqlDao">
+    <select id="selectList" resultType="hashmap">
+        select * from zxz_test
+    </select>
+
+    <!--
+    使用mysql替换oracle会遇到序列问题,如下为一种解决方案
+    1.jdbc连接串增加&allowMultiQueries=true,支持两天sql查询
+    2.创建一张表记录序列信息,线update+1,再select用英文;隔开两条sql
+    -->
+    <select id="getSeq" resultType="integer">
+        update zxz_test set seq_val = seq_val +seq_step where seq_name = 'zxz_seq';
+        select seq_val from zxz_test where seq_name = 'zxz_seq'
+    </select>
+</mapper>
