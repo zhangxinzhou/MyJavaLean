@@ -16,4 +16,10 @@
         update zxz_test set seq_val = seq_val +seq_step where seq_name = 'zxz_seq';
         select seq_val from zxz_test where seq_name = 'zxz_seq'
     </select>
+
+    <select id="insertOne">
+        INSERT INTO zxz.zxz_test
+        (id, seq_val, seq_step, seq_name)
+        VALUES(0, 0, 0, 'xxx')
+    </select>
 </mapper>

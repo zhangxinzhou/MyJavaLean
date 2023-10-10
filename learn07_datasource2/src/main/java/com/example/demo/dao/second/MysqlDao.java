@@ -7,4 +7,6 @@ public interface MysqlDao {
     List<Object> selectList();
 
     Integer getSeq();
+
+    void insertOne();
 }

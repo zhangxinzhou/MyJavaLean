@@ -1,6 +1,7 @@
 package com.example.demo.web;
 
 import com.alibaba.fastjson.JSON;
+import com.example.demo.service.MultiDataSourceTransactionService;
 import com.example.demo.service.MysqlService;
 import com.example.demo.service.PgService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +19,47 @@ public class ZxzController {
     @Autowired
     MysqlService mysqlService;
 
+    @Autowired
+    MultiDataSourceTransactionService multiDataSourceTransactionService;
+
     @RequestMapping("/test")
     public String test() {
         String str = "";
-        List<Object> list = pgService.getList();
-        List<Object> list1 = mysqlService.getList();
-        str += JSON.toJSONString(list);
-        str += JSON.toJSONString(list1);
-        str += "\nseq=" + mysqlService.getSeq();
+        List<Object> pgList = pgService.getList();
+        List<Object> mysqlList = mysqlService.getList();
+        str += "pg:<br/>";
+        for (Object o : pgList) {
+            str += JSON.toJSONString(o) + "<br/>";
+        }
+        str += "mysql:<br/>";
+        for (Object o : mysqlList) {
+            str += JSON.toJSONString(o) + "<br/>";
+        }
+        str += "seq=" + mysqlService.getSeq();
         return str;
     }
 
+    @RequestMapping("/transactionTest1")
+    public String transactionTest1() {
+        multiDataSourceTransactionService.multiDataSourceTransactionTest1();
+        return "transactionTest1";
+    }
+
+    @RequestMapping("/transactionTest2")
+    public String transactionTest2() {
+        multiDataSourceTransactionService.multiDataSourceTransactionTest2();
+        return "transactionTest2";
+    }
+
+    @RequestMapping("/pgDoubleTest")
+    public String pgDoubleTest() {
+        multiDataSourceTransactionService.pgDoubleTest();
+        return "pgDoubleTest";
+    }
+
+    @RequestMapping("/mysqlDoubleTest")
+    public String mysqlDoubleTest() {
+        multiDataSourceTransactionService.mysqlDoubleTest();
+        return "mysqlDoubleTest";
+    }
 }

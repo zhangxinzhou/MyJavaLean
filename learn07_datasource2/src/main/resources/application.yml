@@ -21,4 +21,4 @@ logging:
   path: ./data_migration
   level:
     root: INFO
-    com.cxqy.data: DEBUG
+    com.example.demo.dao: DEBUG

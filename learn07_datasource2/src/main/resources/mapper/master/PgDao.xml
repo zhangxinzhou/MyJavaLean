@@ -6,4 +6,10 @@
     <select id="selectList" resultType="hashmap">
         select * from zxz.aaa
     </select>
+
+    <insert id="insertOne">
+        INSERT INTO zxz.aaa
+        (c1, c2, c3)
+        VALUES('test', 'test', 'test')
+    </insert>
 </mapper>
